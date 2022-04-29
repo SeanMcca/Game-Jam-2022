@@ -20,6 +20,7 @@ public class PlayerDamage : MonoBehaviour
         {
             if (col.tag == "Enemy1") {
                 TakeDamage(20);
+                Debug.Log("Damage taken");
             }
         }
     }
