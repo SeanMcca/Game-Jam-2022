@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 public class SceneChangeTrigger : MonoBehaviour
 {
     public LevelLoader loader;
-    int sceneIndex;
+    public int sceneIndex = 0;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        sceneIndex = loader.GetScene();
     }
 
     // Update is called once per frame
@@ -25,16 +24,7 @@ public class SceneChangeTrigger : MonoBehaviour
     {
         if(col.tag == "Player")
         {
-            switch(sceneIndex)
-            {
-                case 0:
-                    StartCoroutine(loader.LoadLevel(1));
-                    break;
-                case 1:
-                    StartCoroutine(loader.LoadLevel(0));
-                    break;
-
-            }
+            StartCoroutine(loader.LoadLevel(sceneIndex));
         }
     }
 }
