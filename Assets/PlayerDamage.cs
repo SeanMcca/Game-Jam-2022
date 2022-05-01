@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerDamage : MonoBehaviour
 {
 
@@ -9,7 +9,8 @@ public class PlayerDamage : MonoBehaviour
     public int minHealth = 100;
     public float currentHealth;
     public HealthControl healthBar;
-
+    public Animator transition;
+    public float transitionTime;
     private bool canGetDamage = false;
     void Start()
     {
@@ -21,15 +22,17 @@ public class PlayerDamage : MonoBehaviour
     {
         if (canGetDamage == false)
         {
-            wait(7);
+            wait(3);
             canGetDamage = true;
 
         }
         healthBar.SetHealth((int)currentHealth);
-        //if (currentHealth < 100)
-       // {
-        //    currentHealth = 100;
-      //  }
+        if (currentHealth < 100)
+        {
+            currentHealth = 100;
+       
+
+        }
     }
     IEnumerator wait(float waitTime)
     {
@@ -69,6 +72,8 @@ public class PlayerDamage : MonoBehaviour
             currentHealth += health;
             healthBar.SetHealth((int)currentHealth);
         }
-       
+
     }
+
+    
 }
