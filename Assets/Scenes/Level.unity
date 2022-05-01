@@ -5833,7 +5833,7 @@ PrefabInstance:
       objectReference: {fileID: 490632398}
     - target: {fileID: 2631574317770086895, guid: 12c69c8def76b1141bfcd153592e855d, type: 3}
       propertyPath: sceneIndex
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12c69c8def76b1141bfcd153592e855d, type: 3}
@@ -7259,7 +7259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8666495094139079529, guid: af874a8a343c427418560f7c4eae1dbb, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8666495094139079529, guid: af874a8a343c427418560f7c4eae1dbb, type: 3}
       propertyPath: m_AnchorMax.x

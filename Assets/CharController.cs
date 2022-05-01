@@ -57,12 +57,27 @@ public class CharController : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.4f, groundLayer);
     }
 
+    private void FixedUpdate()
+    {
+        var inputHorizontal = Input.GetAxisRaw("Horizontal");
+
+        if (inputHorizontal > 0 && !facingRight)
+        {
+            Flip();
+        }
+
+        if (inputHorizontal < 0 && facingRight)
+        {
+            Flip();
+        }    
+    }
+
     private void Flip()
     {
-        var movement = Input.GetAxis("Horizontal");
-        if (facingRight && movement < 0f || !facingRight && movement > 0f) ;
+        Vector2 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+
         facingRight = !facingRight;
-        Vector3 scale = transform.localScale;
-        transform.localScale = scale * -1;
     }
 } 
