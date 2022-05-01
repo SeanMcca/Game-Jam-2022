@@ -26,10 +26,10 @@ public class PlayerDamage : MonoBehaviour
 
         }
         healthBar.SetHealth((int)currentHealth);
-        if (currentHealth < 100)
-        {
-            currentHealth = 100;
-        }
+        //if (currentHealth < 100)
+       // {
+        //    currentHealth = 100;
+      //  }
     }
     IEnumerator wait(float waitTime)
     {
