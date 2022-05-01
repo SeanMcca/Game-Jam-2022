@@ -26,7 +26,7 @@ public class CharController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         var movement = Input.GetAxis("Horizontal");
         if (movement > 0.1f || movement < -0.1f)

@@ -4,30 +4,71 @@ using UnityEngine;
 
 public class PlayerDamage : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+
+    public int maxHealth = 200;
+    public int minHealth = 100;
+    public float currentHealth;
     public HealthControl healthBar;
+
+    private bool canGetDamage = false;
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        void OnTriggerEnter2D(Collider col)
+        if (canGetDamage == false)
         {
-            if (col.tag == "Enemy1") {
-                TakeDamage(20);
-                Debug.Log("Damage taken");
-            }
+            wait(7);
+            canGetDamage = true;
+
+        }
+        healthBar.SetHealth((int)currentHealth);
+        if (currentHealth < 100)
+        {
+            currentHealth = 100;
+        }
+    }
+    IEnumerator wait(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("Collied");
+
+        if (col.gameObject.tag == "Enemy1")
+        {
+            TakeDamage(20);
         }
     }
 
     void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        if (canGetDamage == true)
+        {
+            if (currentHealth > 100)
+            {
+                canGetDamage = false;
+                currentHealth -= damage;
+                healthBar.SetHealth((int)currentHealth);
+            }
+        }
+    }
+    void FixedUpdate()
+    {
+        heal(.065f);
+    }
+
+    void heal(float health)
+    {
+        if (currentHealth < 200)
+        {
+            currentHealth += health;
+            healthBar.SetHealth((int)currentHealth);
+        }
+       
     }
 }
